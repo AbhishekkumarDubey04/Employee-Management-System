@@ -4,9 +4,7 @@ import GlassCard from '../components/GlassCard';
 import MetricWidget from '../components/MetricWidget';
 import NeonProgressRing from '../components/NeonProgressRing';
 import GlowButton from '../components/GlowButton';
-import { cn } from '../lib/utils';
 import { useAuth } from '../contexts/AuthContext';
-
 import { Link } from 'react-router-dom';
 
 const container = {

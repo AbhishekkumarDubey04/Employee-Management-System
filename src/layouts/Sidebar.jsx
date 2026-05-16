@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   LayoutDashboard, Users, CalendarCheck, Clock, FolderKanban, 
   UsersRound, LineChart, Banknote, Calendar, MessageSquare, 
-  Hash as Slack, Bell, Settings, ChevronLeft, ChevronRight
+  Hash as Slack, Settings, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useAuth } from '../contexts/AuthContext';

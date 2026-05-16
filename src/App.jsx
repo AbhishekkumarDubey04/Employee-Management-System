@@ -8,6 +8,12 @@ import Employees from './pages/Employees';
 import Analytics from './pages/Analytics';
 import Projects from './pages/Projects';
 import Profile from './pages/Profile';
+import Attendance from './pages/Attendance';
+import Leaves from './pages/Leaves';
+import Teams from './pages/Teams';
+import Calendar from './pages/Calendar';
+import Payroll from './pages/Payroll';
+import Messages from './pages/Messages';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
 
@@ -26,20 +32,19 @@ function App() {
                 <Route path="profile" element={<Profile />} />
                 <Route path="employees" element={<Employees />} />
                 <Route path="projects" element={<Projects />} />
-                
+                <Route path="attendance" element={<Attendance />} />
+                <Route path="leaves" element={<Leaves />} />
+                <Route path="teams" element={<Teams />} />
+                <Route path="calendar" element={<Calendar />} />
+                <Route path="messages" element={<Messages />} />
+
                 {/* Admin Only Routes */}
                 <Route element={<ProtectedRoute allowedRoles={['ADMIN']} />}>
                   <Route path="analytics" element={<Analytics />} />
-                  <Route path="payroll" element={<PlaceholderPage title="Payroll" />} />
+                  <Route path="payroll" element={<Payroll />} />
                   <Route path="settings" element={<PlaceholderPage title="Settings" />} />
                 </Route>
 
-                {/* Common Routes */}
-                <Route path="attendance" element={<PlaceholderPage title="Attendance" />} />
-                <Route path="leaves" element={<PlaceholderPage title="Leaves" />} />
-                <Route path="teams" element={<PlaceholderPage title="Teams" />} />
-                <Route path="calendar" element={<PlaceholderPage title="Calendar" />} />
-                <Route path="messages" element={<PlaceholderPage title="Messages" />} />
                 <Route path="slack" element={<PlaceholderPage title="Slack Integration" />} />
               </Route>
             </Route>

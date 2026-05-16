@@ -70,7 +70,7 @@ export default function Analytics() {
                 <XAxis dataKey="name" stroke="#6B7280" tick={{fill: '#6B7280', fontSize: 12}} tickLine={false} axisLine={false} />
                 <YAxis stroke="#6B7280" tick={{fill: '#6B7280', fontSize: 12}} tickLine={false} axisLine={false} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0B0B0B', borderColor: 'rgba(255,212,0,0.2)', borderRadius: '12px' }}
+                  contentStyle={{ backgroundColor: 'var(--theme-card)', borderColor: 'var(--theme-border)', borderRadius: '12px', color: 'var(--theme-text)' }}
                   itemStyle={{ color: 'var(--theme-accent)' }}
                 />
                 <Area type="monotone" dataKey="value" stroke="var(--theme-accent)" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" />
@@ -90,7 +90,7 @@ export default function Analytics() {
                 <PolarRadiusAxis angle={30} domain={[0, 150]} tick={false} axisLine={false} />
                 <Radar name="Skills" dataKey="A" stroke="var(--theme-accent)" fill="var(--theme-accent)" fillOpacity={0.2} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0B0B0B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                  contentStyle={{ backgroundColor: 'var(--theme-card)', borderColor: 'var(--theme-border)', borderRadius: '8px', color: 'var(--theme-text)' }}
                 />
               </RadarChart>
             </ResponsiveContainer>
@@ -107,8 +107,8 @@ export default function Analytics() {
                 <XAxis dataKey="day" stroke="#6B7280" tick={{fill: '#6B7280', fontSize: 12}} tickLine={false} axisLine={false} />
                 <YAxis stroke="#6B7280" tick={{fill: '#6B7280', fontSize: 12}} tickLine={false} axisLine={false} />
                 <Tooltip 
-                  cursor={{fill: 'rgba(255,255,255,0.02)'}}
-                  contentStyle={{ backgroundColor: '#0B0B0B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '12px' }}
+                  cursor={{fill: 'rgba(128,128,128,0.05)'}}
+                  contentStyle={{ backgroundColor: 'var(--theme-card)', borderColor: 'var(--theme-border)', borderRadius: '12px', color: 'var(--theme-text)' }}
                 />
                 <Bar dataKey="present" fill="#22C55E" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="absent" fill="#EF4444" radius={[4, 4, 0, 0]} />
