@@ -7,24 +7,30 @@ import {
   Hash as Slack, Bell, Settings, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useAuth } from '../contexts/AuthContext';
 
-const navItems = [
+const commonNavItems = [
   { path: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/employees', label: 'Employees', icon: Users },
   { path: '/attendance', label: 'Attendance', icon: CalendarCheck },
   { path: '/leaves', label: 'Leaves', icon: Clock },
   { path: '/projects', label: 'Projects', icon: FolderKanban },
   { path: '/teams', label: 'Teams', icon: UsersRound },
-  { path: '/analytics', label: 'Analytics', icon: LineChart },
-  { path: '/payroll', label: 'Payroll', icon: Banknote },
   { path: '/calendar', label: 'Calendar', icon: Calendar },
   { path: '/messages', label: 'Messages', icon: MessageSquare },
   { path: '/slack', label: 'Slack', icon: Slack, isSlack: true },
-  { path: '/notifications', label: 'Notifications', icon: Bell },
+];
+
+const adminNavItems = [
+  { path: '/analytics', label: 'Analytics', icon: LineChart },
+  { path: '/payroll', label: 'Payroll', icon: Banknote },
   { path: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar({ isOpen, setIsOpen }) {
+  const { isAdmin } = useAuth();
+  
+  const navItems = isAdmin ? [...commonNavItems, ...adminNavItems] : commonNavItems;
   return (
     <motion.aside
       animate={{ width: isOpen ? 260 : 80 }}

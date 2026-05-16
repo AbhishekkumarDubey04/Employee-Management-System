@@ -3,6 +3,7 @@ import { Search, Bell, Sparkles, ChevronDown, Moon, Sun, User, Settings, LogOut 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../contexts/ThemeContext';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
 
 import profilePic from '../assets/profile picture.png';
 
@@ -11,6 +12,7 @@ export default function TopNavbar({ sidebarOpen }) {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -18,6 +20,7 @@ export default function TopNavbar({ sidebarOpen }) {
   }, []);
 
   const handleLogout = () => {
+    logout();
     navigate('/auth');
   };
 
@@ -73,12 +76,21 @@ export default function TopNavbar({ sidebarOpen }) {
             className="flex items-center gap-3 pl-6 border-l border-border cursor-pointer group"
             onClick={() => setIsProfileOpen(!isProfileOpen)}
           >
-            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-800 to-gray-600 border border-border overflow-hidden relative">
-              <img src={profilePic} alt="Abhishek Kumar" className="w-full h-full object-cover" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-800 to-gray-600 border border-border overflow-hidden relative flex items-center justify-center">
+              {user?.avatar ? (
+                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+              ) : (
+                <User size={20} className="text-white" />
+              )}
             </div>
             <div className="hidden md:block">
-              <p className="text-sm font-medium text-text group-hover:text-accent transition-colors">Abhishek Kumar</p>
-              <p className="text-xs text-muted">Java Full Stack Developer</p>
+              <p className="text-sm font-medium text-text group-hover:text-accent transition-colors">{user?.name || 'Guest'}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-xs text-muted">{user?.title || 'Unknown Role'}</p>
+                <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono font-bold ${user?.role === 'ADMIN' ? 'bg-accent/20 text-accent' : 'bg-blue-500/20 text-blue-500'}`}>
+                  {user?.role || 'GUEST'}
+                </span>
+              </div>
             </div>
             <ChevronDown 
               size={16} 
@@ -94,11 +106,11 @@ export default function TopNavbar({ sidebarOpen }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 top-[calc(100%+16px)] w-56 bg-card backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden py-2 z-50"
+                className="absolute right-0 top-[calc(100%+16px)] w-64 bg-card backdrop-blur-xl border border-border rounded-xl shadow-2xl overflow-hidden py-2 z-50"
               >
                 <div className="px-4 py-3 border-b border-border">
-                  <p className="text-sm font-medium text-text">Abhishek Kumar</p>
-                  <p className="text-xs text-muted font-mono mt-0.5">abhishek@aura.ai</p>
+                  <p className="text-sm font-medium text-text">{user?.name || 'Guest'}</p>
+                  <p className="text-xs text-muted font-mono mt-0.5">{user?.email || 'No email'}</p>
                 </div>
                 
                 <div className="py-2">

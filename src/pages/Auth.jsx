@@ -5,13 +5,26 @@ import { Mail, Lock, User, ArrowRight } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import GlowButton from '../components/GlowButton';
 import { cn } from '../lib/utils';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const navigate = useNavigate();
+  const { loginAsAdmin, loginAsUser } = useAuth();
 
   const handleAuth = (e) => {
     e.preventDefault();
+    loginAsAdmin(); // Default to admin if they type manually
+    navigate('/dashboard');
+  };
+
+  const handleDemoAdmin = () => {
+    loginAsAdmin();
+    navigate('/dashboard');
+  };
+
+  const handleDemoUser = () => {
+    loginAsUser();
     navigate('/dashboard');
   };
 
@@ -66,6 +79,30 @@ export default function Auth() {
             <p className="text-muted mb-8">
               {isLogin ? 'Enter your credentials to access the terminal.' : 'Request platform access from your administrator.'}
             </p>
+
+            {/* Demo Buttons */}
+            <div className="flex gap-3 mb-6">
+              <button 
+                onClick={handleDemoAdmin}
+                className="flex-1 py-2 bg-accent/10 border border-accent/20 text-accent rounded-lg text-sm font-medium hover:bg-accent/20 transition-colors"
+                type="button"
+              >
+                Demo Admin
+              </button>
+              <button 
+                onClick={handleDemoUser}
+                className="flex-1 py-2 bg-blue-500/10 border border-blue-500/20 text-blue-500 rounded-lg text-sm font-medium hover:bg-blue-500/20 transition-colors"
+                type="button"
+              >
+                Demo User
+              </button>
+            </div>
+
+            <div className="relative flex items-center py-2 mb-6">
+              <div className="flex-grow border-t border-border"></div>
+              <span className="flex-shrink-0 mx-4 text-muted text-xs uppercase">Or sign in manually</span>
+              <div className="flex-grow border-t border-border"></div>
+            </div>
 
             <form onSubmit={handleAuth} className="space-y-4">
               <AnimatePresence mode="popLayout">
