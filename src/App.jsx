@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import Employees from './pages/Employees';
 import Analytics from './pages/Analytics';
 import Projects from './pages/Projects';
+import Profile from './pages/Profile';
 import Auth from './pages/Auth';
 import PlaceholderPage from './pages/PlaceholderPage';
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/" element={<MainLayout />}>
                 <Route index element={<Navigate to="/dashboard" replace />} />
                 <Route path="dashboard" element={<Dashboard />} />
+                <Route path="profile" element={<Profile />} />
                 <Route path="employees" element={<Employees />} />
                 <Route path="projects" element={<Projects />} />
                 

@@ -114,7 +114,10 @@ export default function TopNavbar({ sidebarOpen }) {
                 </div>
                 
                 <div className="py-2">
-                  <button className="w-full px-4 py-2 text-left text-sm text-muted hover:text-text hover:bg-glass-hover flex items-center gap-2 transition-colors">
+                  <button 
+                    onClick={() => { setIsProfileOpen(false); navigate('/profile'); }}
+                    className="w-full px-4 py-2 text-left text-sm text-muted hover:text-text hover:bg-glass-hover flex items-center gap-2 transition-colors"
+                  >
                     <User size={16} />
                     My Profile
                   </button>

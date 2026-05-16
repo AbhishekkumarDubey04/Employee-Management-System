@@ -8,16 +8,26 @@ const DEMO_USERS = {
     id: 1,
     name: 'Abhishek Kumar',
     email: 'abhishek@aura.ai',
+    phone: '+1 (555) 123-4567',
+    location: 'San Francisco, CA',
+    joinDate: 'Oct 2023',
     role: 'ADMIN',
     title: 'Java Full Stack Developer',
+    department: 'Engineering',
+    bio: 'Lead engineer overseeing backend architecture and system performance. Specializing in high-availability systems and data integration.',
     avatar: profilePic
   },
   USER: {
     id: 2,
     name: 'Emily Davis',
     email: 'emily@aura.ai',
+    phone: '+1 (555) 987-6543',
+    location: 'New York, NY',
+    joinDate: 'Jan 2024',
     role: 'USER',
     title: 'Frontend Engineer',
+    department: 'Design Systems',
+    bio: 'Passionate about building intuitive and accessible user interfaces. Currently leading the UI component library migration.',
     avatar: null
   }
 };

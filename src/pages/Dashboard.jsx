@@ -7,6 +7,8 @@ import GlowButton from '../components/GlowButton';
 import { cn } from '../lib/utils';
 import { useAuth } from '../contexts/AuthContext';
 
+import { Link } from 'react-router-dom';
+
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.1 } }
@@ -42,7 +44,9 @@ function UserDashboard({ user }) {
           <p className="text-accent font-mono text-sm mb-6 glow-text uppercase">{user?.title} // {user?.role}</p>
           
           <div className="w-full flex gap-3 mt-auto">
-            <GlowButton className="flex-1 text-sm py-2">Profile</GlowButton>
+            <Link to="/profile" className="flex-1">
+              <GlowButton className="w-full text-sm py-2">Profile</GlowButton>
+            </Link>
             <GlowButton variant="secondary" className="flex-1 text-sm py-2">Settings</GlowButton>
           </div>
         </GlassCard>
