@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cyber: #FFD400;
-  --color-neon: rgba(255, 212, 0, 0.6);
-  --color-active: #22C55E;
+  --color-accent: var(--theme-accent);
+  --color-accent-hover: var(--theme-accent-hover);
+  --color-accent-subtle: var(--theme-accent-subtle);
+  
+  --color-active: #10B981; /* Emerald 500 */
   --color-warning: #F59E0B;
   --color-error: #EF4444;
 
@@ -21,27 +23,35 @@
 }
 
 :root {
-  /* Default Dark Mode */
-  --theme-bg: #050505;
-  --theme-bg-secondary: #0B0B0B;
-  --theme-text: #ffffff;
-  --theme-muted: #9ca3af; /* gray-400 */
+  /* Default to Dark Mode but cleaner */
+  --theme-accent: #10B981; /* Emerald */
+  --theme-accent-hover: #059669;
+  --theme-accent-subtle: rgba(16, 185, 129, 0.1);
+  
+  --theme-bg: #0F172A; /* Deep Navy/Slate */
+  --theme-bg-secondary: #1E293B;
+  --theme-text: #F8FAFC;
+  --theme-muted: #94A3B8;
   --theme-border: rgba(255, 255, 255, 0.1);
   --theme-glass: rgba(255, 255, 255, 0.03);
-  --theme-glass-hover: rgba(255, 255, 255, 0.08);
-  --theme-card: rgba(10, 10, 10, 0.8);
+  --theme-glass-hover: rgba(255, 255, 255, 0.06);
+  --theme-card: rgba(30, 41, 59, 0.7);
 }
 
 .light {
-  /* Light Mode */
-  --theme-bg: #f3f4f6; /* gray-100 */
-  --theme-bg-secondary: #e5e7eb; /* gray-200 */
-  --theme-text: #111827; /* gray-900 */
-  --theme-muted: #4b5563; /* gray-600 */
-  --theme-border: rgba(0, 0, 0, 0.1);
-  --theme-glass: rgba(255, 255, 255, 0.6);
-  --theme-glass-hover: rgba(255, 255, 255, 0.8);
-  --theme-card: rgba(255, 255, 255, 0.9);
+  /* Ultra Clean Light Mode */
+  --theme-accent: #10B981; /* Emerald */
+  --theme-accent-hover: #059669;
+  --theme-accent-subtle: rgba(16, 185, 129, 0.1);
+
+  --theme-bg: #F8FAFC; /* Very light slate */
+  --theme-bg-secondary: #F1F5F9;
+  --theme-text: #0F172A;
+  --theme-muted: #64748B;
+  --theme-border: rgba(15, 23, 42, 0.08);
+  --theme-glass: rgba(255, 255, 255, 0.8);
+  --theme-glass-hover: rgba(255, 255, 255, 0.95);
+  --theme-card: rgba(255, 255, 255, 0.95);
 }
 
 @layer base {
@@ -58,15 +68,16 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-glass backdrop-blur-[40px] border border-border shadow-lg shadow-black/5;
+    @apply bg-glass backdrop-blur-2xl border border-border shadow-sm;
   }
   
   .glow-text {
-    text-shadow: 0 0 10px var(--color-neon);
+    /* Removed heavy neon drop shadow for minimalist look */
+    font-weight: 600;
   }
   
   .glow-border {
-    box-shadow: 0 0 15px rgba(255, 212, 0, 0.2);
+    box-shadow: 0 0 0 2px var(--theme-accent-subtle);
   }
 
   .custom-scrollbar::-webkit-scrollbar {

@@ -20,7 +20,7 @@ export default function NeonProgressRing({ percentage, size = 160, strokeWidth =
         />
         {/* Progress Ring */}
         <motion.circle
-          className="text-[#FFD400]"
+          className="text-accent"
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={circumference}
@@ -33,7 +33,7 @@ export default function NeonProgressRing({ percentage, size = 160, strokeWidth =
           initial={{ strokeDashoffset: circumference }}
           animate={{ strokeDashoffset: offset }}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
-          style={{ filter: "drop-shadow(0 0 8px rgba(255,212,0,0.5))" }}
+          style={{ filter: "drop-shadow(0 4px 6px var(--theme-accent-subtle))" }}
         />
       </svg>
       <div className="absolute flex flex-col items-center justify-center">

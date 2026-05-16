@@ -62,8 +62,8 @@ export default function Analytics() {
               <AreaChart data={performanceData}>
                 <defs>
                   <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#FFD400" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#FFD400" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="var(--theme-accent)" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="var(--theme-accent)" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
@@ -71,9 +71,9 @@ export default function Analytics() {
                 <YAxis stroke="#6B7280" tick={{fill: '#6B7280', fontSize: 12}} tickLine={false} axisLine={false} />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0B0B0B', borderColor: 'rgba(255,212,0,0.2)', borderRadius: '12px' }}
-                  itemStyle={{ color: '#FFD400' }}
+                  itemStyle={{ color: 'var(--theme-accent)' }}
                 />
-                <Area type="monotone" dataKey="value" stroke="#FFD400" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" />
+                <Area type="monotone" dataKey="value" stroke="var(--theme-accent)" strokeWidth={3} fillOpacity={1} fill="url(#colorValue)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -88,7 +88,7 @@ export default function Analytics() {
                 <PolarGrid stroke="rgba(255,255,255,0.1)" />
                 <PolarAngleAxis dataKey="subject" tick={{fill: '#9CA3AF', fontSize: 12}} />
                 <PolarRadiusAxis angle={30} domain={[0, 150]} tick={false} axisLine={false} />
-                <Radar name="Skills" dataKey="A" stroke="#FFD400" fill="#FFD400" fillOpacity={0.2} />
+                <Radar name="Skills" dataKey="A" stroke="var(--theme-accent)" fill="var(--theme-accent)" fillOpacity={0.2} />
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0B0B0B', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
                 />

@@ -31,11 +31,11 @@ export default function Dashboard() {
       {/* 1. Identity Hub */}
       <motion.div variants={item} className="xl:col-span-1 md:col-span-2">
         <GlassCard className="h-full flex flex-col items-center text-center p-8 relative overflow-hidden group">
-          <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-[#FFD400]/10 to-transparent" />
+          <div className="absolute top-0 w-full h-32 bg-gradient-to-b from-accent/10 to-transparent" />
           
           <div className="relative w-28 h-28 mb-4">
-            <div className="absolute inset-0 rounded-full border-2 border-[#FFD400]/30 animate-[spin_4s_linear_infinite]" />
-            <div className="absolute inset-2 rounded-full border border-[#FFD400]/50 animate-[spin_3s_linear_infinite_reverse]" />
+            <div className="absolute inset-0 rounded-full border-2 border-accent/30 animate-[spin_4s_linear_infinite]" />
+            <div className="absolute inset-2 rounded-full border border-accent/50 animate-[spin_3s_linear_infinite_reverse]" />
             <div className="absolute inset-0 bg-gradient-to-tr from-gray-800 to-gray-600 rounded-full overflow-hidden border-2 border-black z-10">
               <img src={profilePic} alt="Abhishek Kumar" className="w-full h-full object-cover" />
             </div>
@@ -43,7 +43,7 @@ export default function Dashboard() {
           </div>
 
           <h2 className="text-2xl font-bold text-text mb-1">Abhishek Kumar</h2>
-          <p className="text-[#FFD400] font-mono text-sm mb-6 glow-text">JAVA FULL STACK DEVELOPER // DATA</p>
+          <p className="text-accent font-mono text-sm mb-6 glow-text">JAVA FULL STACK DEVELOPER // DATA</p>
           
           <div className="w-full flex gap-3 mt-auto">
             <GlowButton className="flex-1 text-sm py-2">Profile</GlowButton>
@@ -73,7 +73,7 @@ export default function Dashboard() {
                 </div>
                 <div className="bg-glass border border-border px-4 py-2 rounded-lg">
                   <p className="text-xs text-muted font-mono">PRS MERGED</p>
-                  <p className="text-xl font-bold text-[#FFD400]">42</p>
+                  <p className="text-xl font-bold text-accent">42</p>
                 </div>
               </div>
             </div>
@@ -97,12 +97,12 @@ export default function Dashboard() {
       <motion.div variants={item} className="xl:col-span-2 md:col-span-3">
         <GlassCard className="h-full">
           <div className="flex items-center gap-3 mb-6 border-b border-border pb-4">
-            <Brain className="text-[#FFD400]" size={24} />
+            <Brain className="text-accent" size={24} />
             <h3 className="text-lg font-semibold text-text tracking-wide">AURA INSIGHTS</h3>
           </div>
           <div className="space-y-4">
-            <div className="flex items-start gap-4 p-4 rounded-xl bg-glass border border-border hover:border-[#FFD400]/30 transition-colors group">
-              <div className="p-2 bg-[#FFD400]/10 rounded-lg text-[#FFD400] group-hover:scale-110 transition-transform">
+            <div className="flex items-start gap-4 p-4 rounded-xl bg-glass border border-border hover:border-accent/30 transition-colors group">
+              <div className="p-2 bg-accent/10 rounded-lg text-accent group-hover:scale-110 transition-transform">
                 <Zap size={18} />
               </div>
               <div>
@@ -133,7 +133,7 @@ export default function Dashboard() {
           <div className="space-y-4">
             {[
               { id: 'AURA-UI', status: 'ACTIVE', progress: 65, color: '#22C55E' },
-              { id: 'PAYMENT-API', status: 'TESTING', progress: 92, color: '#FFD400' },
+              { id: 'PAYMENT-API', status: 'TESTING', progress: 92, color: 'var(--theme-accent)' },
               { id: 'AUTH-V2', status: 'REVIEW', progress: 40, color: '#F59E0B' },
             ].map(proj => (
               <div key={proj.id} className="group cursor-pointer">

@@ -18,7 +18,7 @@ export default function Auth() {
   return (
     <div className="min-h-screen bg-bg flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background ambient light */}
-      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-[#FFD400] opacity-[0.05] blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-accent opacity-[0.05] blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-500 opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
       
       {/* Grid Pattern */}
@@ -34,7 +34,7 @@ export default function Auth() {
         <div className="hidden lg:flex w-1/2 bg-black/40 backdrop-blur-3xl p-16 flex-col justify-between relative border-r border-border">
           <div>
             <div className="flex items-center gap-3 mb-12">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#FFD400] to-yellow-600 shadow-[0_0_15px_rgba(255,212,0,0.4)] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-yellow-600 shadow-[0_0_15px_rgba(255,212,0,0.4)] flex items-center justify-center">
                 <span className="text-black font-bold text-xl leading-none">A</span>
               </div>
               <span className="text-2xl font-bold tracking-widest text-text glow-text">AURA</span>
@@ -42,7 +42,7 @@ export default function Auth() {
             
             <h1 className="text-4xl font-bold text-text mb-6 leading-tight">
               Enterprise <br/>
-              <span className="text-[#FFD400] glow-text">Intelligence</span> <br/>
+              <span className="text-accent glow-text">Intelligence</span> <br/>
               Platform.
             </h1>
             <p className="text-muted text-lg max-w-sm leading-relaxed">
@@ -80,7 +80,7 @@ export default function Auth() {
                     <input 
                       type="text" 
                       placeholder="Full Name" 
-                      className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-[#FFD400]/50 focus:bg-glass-hover transition-all"
+                      className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                     />
                   </motion.div>
                 )}
@@ -92,7 +92,7 @@ export default function Auth() {
                   type="email" 
                   placeholder="Corporate Email" 
                   required
-                  className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-[#FFD400]/50 focus:bg-glass-hover transition-all"
+                  className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                 />
               </div>
 
@@ -102,13 +102,13 @@ export default function Auth() {
                   type="password" 
                   placeholder="Password" 
                   required
-                  className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-[#FFD400]/50 focus:bg-glass-hover transition-all"
+                  className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                 />
               </div>
 
               {isLogin && (
                 <div className="flex justify-end pt-1">
-                  <a href="#" className="text-xs text-muted hover:text-[#FFD400] transition-colors">Forgot password?</a>
+                  <a href="#" className="text-xs text-muted hover:text-accent transition-colors">Forgot password?</a>
                 </div>
               )}
 
@@ -123,7 +123,7 @@ export default function Auth() {
                 {isLogin ? "Don't have access? " : "Already have an account? "}
                 <button 
                   onClick={() => setIsLogin(!isLogin)} 
-                  className="text-text hover:text-[#FFD400] transition-colors font-medium underline underline-offset-4"
+                  className="text-text hover:text-accent transition-colors font-medium underline underline-offset-4"
                 >
                   {isLogin ? 'Request account' : 'Sign in instead'}
                 </button>

@@ -16,7 +16,7 @@ export default function PlaceholderPage({ title }) {
           transition={{ duration: 0.5 }}
         >
           <div className="w-24 h-24 rounded-full bg-glass border border-border flex items-center justify-center mx-auto mb-6">
-            <span className="text-4xl text-[#FFD400]/50">🚧</span>
+            <span className="text-4xl text-accent/50">🚧</span>
           </div>
           <h2 className="text-2xl font-semibold text-text mb-2">{title} Module</h2>
           <p className="text-muted max-w-md">

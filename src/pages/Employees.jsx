@@ -34,13 +34,13 @@ export default function Employees() {
         
         <div className="flex items-center gap-3 w-full md:w-auto">
           <div className="relative w-full md:w-64 group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-[#FFD400] transition-colors" size={16} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted group-focus-within:text-accent transition-colors" size={16} />
             <input 
               type="text" 
               placeholder="Search directory..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-glass border border-border rounded-lg py-2 pl-10 pr-4 text-sm text-text placeholder-gray-500 focus:outline-none focus:border-[#FFD400]/50 transition-all"
+              className="w-full bg-glass border border-border rounded-lg py-2 pl-10 pr-4 text-sm text-text placeholder-gray-500 focus:outline-none focus:border-accent/50 transition-all"
             />
           </div>
           <button className="p-2 bg-glass border border-border rounded-lg text-muted hover:text-text hover:bg-glass-hover transition-colors">
@@ -83,7 +83,7 @@ export default function Employees() {
                 <GlassCard className="flex flex-col p-6 group">
                   <div className="flex justify-between items-start mb-4">
                     <div className="relative">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-border flex items-center justify-center text-2xl font-bold text-muted group-hover:border-[#FFD400]/50 transition-colors">
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-border flex items-center justify-center text-2xl font-bold text-muted group-hover:border-accent/50 transition-colors">
                         {emp.avatar}
                       </div>
                       <span className={cn(
@@ -98,7 +98,7 @@ export default function Employees() {
                   
                   <div>
                     <h3 className="text-lg font-bold text-text">{emp.name}</h3>
-                    <p className="text-[#FFD400] text-sm font-mono mt-1 glow-text">{emp.role}</p>
+                    <p className="text-accent text-sm font-mono mt-1 glow-text">{emp.role}</p>
                     <p className="text-xs text-muted mt-1">{emp.department}</p>
                   </div>
 
@@ -143,7 +143,7 @@ export default function Employees() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-sm font-semibold text-text group-hover:text-[#FFD400] transition-colors">{emp.name}</p>
+                        <p className="text-sm font-semibold text-text group-hover:text-accent transition-colors">{emp.name}</p>
                         <p className="text-xs text-muted font-mono mt-0.5">{emp.role}</p>
                       </div>
                     </td>
@@ -162,7 +162,7 @@ export default function Employees() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <div className="flex-1 h-1.5 bg-glass-hover rounded-full overflow-hidden w-24">
-                          <div className="h-full bg-[#FFD400] shadow-[0_0_8px_#FFD400]" style={{ width: `${emp.productivity}%` }} />
+                          <div className="h-full bg-accent shadow-[0_0_8px_var(--theme-accent)]" style={{ width: `${emp.productivity}%` }} />
                         </div>
                         <span className="text-xs font-mono text-muted">{emp.productivity}%</span>
                       </div>

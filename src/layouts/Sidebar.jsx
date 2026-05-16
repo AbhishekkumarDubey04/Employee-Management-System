@@ -40,7 +40,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
               exit={{ opacity: 0, x: -20 }}
               className="flex items-center gap-3"
             >
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FFD400] to-yellow-600 shadow-[0_0_15px_rgba(255,212,0,0.4)] flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-yellow-600 shadow-[0_0_15px_rgba(255,212,0,0.4)] flex items-center justify-center">
                 <span className="text-black font-bold text-lg leading-none">A</span>
               </div>
               <span className="text-xl font-bold tracking-widest text-text glow-text">AURA</span>
@@ -68,7 +68,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
               className={({ isActive }) => cn(
                 "flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-300 relative group",
                 isActive 
-                  ? "bg-glass-hover text-[#FFD400] glow-border" 
+                  ? "bg-glass-hover text-accent glow-border" 
                   : "text-muted hover:text-text hover:bg-glass",
                 item.isSlack && isActive && "!text-[#E01E5A] !glow-border shadow-[0_0_15px_rgba(224,30,90,0.2)]"
               )}
@@ -78,7 +78,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                   {isActive && (
                     <motion.div 
                       layoutId="active-nav" 
-                      className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-[#FFD400] rounded-r-full shadow-[0_0_10px_#FFD400]" 
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-accent rounded-r-full shadow-[0_0_10px_var(--theme-accent)]" 
                     />
                   )}
                   <item.icon size={22} className={cn("shrink-0", item.isSlack && !isActive && "text-[#4A154B] dark:text-[#4A154B]")} />

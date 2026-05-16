@@ -9,10 +9,6 @@ export default function MainLayout() {
 
   return (
     <div className="min-h-screen bg-bg text-text flex overflow-hidden transition-colors duration-300">
-      {/* Background ambient light */}
-      <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#FFD400] opacity-[0.03] blur-[120px] rounded-full pointer-events-none" />
-      <div className="fixed bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-blue-500 opacity-[0.02] blur-[100px] rounded-full pointer-events-none" />
-
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
       <TopNavbar sidebarOpen={sidebarOpen} />
       

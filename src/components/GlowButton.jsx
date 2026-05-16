@@ -5,9 +5,9 @@ export default function GlowButton({ children, className, variant = 'primary', .
   const baseStyles = "relative px-6 py-3 rounded-xl font-medium tracking-wide transition-all duration-300 overflow-hidden";
   
   const variants = {
-    primary: "bg-[#FFD400] text-black hover:shadow-[0_0_20px_rgba(255,212,0,0.4)]",
-    secondary: "bg-glass text-text border border-border hover:bg-glass-hover",
-    danger: "bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 hover:shadow-[0_0_15px_rgba(239,68,68,0.3)]"
+    primary: "bg-accent text-white hover:bg-accent-hover shadow-sm hover:shadow",
+    secondary: "bg-glass text-text border border-border hover:bg-glass-hover shadow-sm",
+    danger: "bg-red-50 text-red-600 border border-red-100 hover:bg-red-100 dark:bg-red-500/10 dark:border-red-500/20 dark:text-red-400"
   };
 
   return (

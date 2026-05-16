@@ -13,7 +13,7 @@ const initialColumns = [
     { id: 't3', title: 'Dashboard UI Components', tag: 'Frontend', date: 'Oct 22', comments: 12, attachments: 4, users: ['A', 'J'] },
     { id: 't4', title: 'Slack Integration API', tag: 'API', date: 'Oct 23', comments: 2, attachments: 0, users: ['M'] }
   ]},
-  { id: 'review', title: 'IN REVIEW', color: '#FFD400', tasks: [
+  { id: 'review', title: 'IN REVIEW', color: 'var(--theme-accent)', tasks: [
     { id: 't5', title: 'Employee Directory Module', tag: 'Frontend', date: 'Oct 20', comments: 8, attachments: 2, users: ['S'] }
   ]},
   { id: 'done', title: 'DONE', color: '#22C55E', tasks: [
@@ -32,7 +32,7 @@ export default function Projects() {
           <h1 className="text-3xl font-bold text-text tracking-tight">Active Projects</h1>
           <p className="text-sm text-muted mt-1">Kanban sprint board.</p>
         </div>
-        <button className="flex items-center gap-2 bg-[#FFD400] text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+        <button className="flex items-center gap-2 bg-accent text-black px-4 py-2 rounded-lg font-medium hover:bg-yellow-500 transition-colors">
           <Plus size={18} />
           <span>New Task</span>
         </button>
@@ -54,7 +54,7 @@ export default function Projects() {
 
               <div className="flex-1 bg-glass border border-border rounded-2xl p-3 flex flex-col gap-3 overflow-y-auto custom-scrollbar">
                 {col.tasks.map((task) => (
-                  <GlassCard key={task.id} className="p-4 cursor-grab active:cursor-grabbing hover:border-[#FFD400]/30 transition-colors" hover={false}>
+                  <GlassCard key={task.id} className="p-4 cursor-grab active:cursor-grabbing hover:border-accent/30 transition-colors" hover={false}>
                     <div className="flex justify-between items-start mb-3">
                       <span className="text-[10px] font-mono px-2 py-1 rounded bg-glass text-muted border border-border">
                         {task.tag}
