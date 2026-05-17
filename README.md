@@ -107,3 +107,11 @@ You can log in instantly with any of the seeded credentials. Click **"Demo Admin
 1. **Production Environment**: Remember to change the `JWT_SECRET` key inside `EMS-backend/.env` before launching to production.
 2. **Secure Passwords**: Avoid plain-text password insertions in seed files. Always use the pre-computed Bcrypt hashes.
 3. **Excluded Files**: Sensitive configuration files (like `.env` and `node_modules` folders) are managed and excluded from git commits by the root [.gitignore](.gitignore) glob rules.
+
+## AUTHINTICATION PAGE 
+<img width="1675" height="916" alt="image" src="https://github.com/user-attachments/assets/152eef7a-0caa-4237-845f-cfc87ecb425a" />
+
+## DASHBOARD
+<img width="1678" height="912" alt="image" src="https://github.com/user-attachments/assets/c67ae6fc-c278-4125-8ae1-961fc51f0397" />
+
+
