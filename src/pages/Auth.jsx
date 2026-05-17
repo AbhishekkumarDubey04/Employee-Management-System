@@ -9,23 +9,49 @@ import { useAuth } from '../contexts/AuthContext';
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
-  const navigate = useNavigate();
-  const { loginAsAdmin, loginAsUser } = useAuth();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleAuth = (e) => {
+  const navigate = useNavigate();
+  const { login, register } = useAuth();
+
+  const handleAuth = async (e) => {
     e.preventDefault();
-    loginAsAdmin(); // Default to admin if they type manually
-    navigate('/dashboard');
+    setError('');
+    setLoading(true);
+    try {
+      if (isLogin) {
+        await login(email, password);
+      } else {
+        await register({ name, email, password });
+      }
+      navigate('/dashboard');
+    } catch (err) {
+      console.error('[AUTH ERROR]', err);
+      setError(
+        err.response?.data?.message || 
+        'Authentication failed. Please verify the backend is running and credentials are correct.'
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDemoAdmin = () => {
-    loginAsAdmin();
-    navigate('/dashboard');
+    setEmail('abhishek@aura.ai');
+    setPassword('Dubeyji@04');
+    setIsLogin(true);
+    setError('');
   };
 
   const handleDemoUser = () => {
-    loginAsUser();
-    navigate('/dashboard');
+    setEmail('gurkirat@aura.ai');
+    setPassword('Kitkat@21');
+    setIsLogin(true);
+    setError('');
   };
 
   return (
@@ -104,6 +130,12 @@ export default function Auth() {
               <div className="flex-grow border-t border-border"></div>
             </div>
 
+            {error && (
+              <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-500 rounded-xl text-sm text-center">
+                {error}
+              </div>
+            )}
+
             <form onSubmit={handleAuth} className="space-y-4">
               <AnimatePresence mode="popLayout">
                 {!isLogin && (
@@ -117,6 +149,9 @@ export default function Auth() {
                     <input 
                       type="text" 
                       placeholder="Full Name" 
+                      required
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                     />
                   </motion.div>
@@ -129,6 +164,8 @@ export default function Auth() {
                   type="email" 
                   placeholder="Corporate Email" 
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                 />
               </div>
@@ -139,6 +176,8 @@ export default function Auth() {
                   type="password" 
                   placeholder="Password" 
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="w-full bg-glass border border-border rounded-xl py-3 pl-12 pr-4 text-text placeholder-gray-600 focus:outline-none focus:border-accent/50 focus:bg-glass-hover transition-all"
                 />
               </div>
@@ -149,8 +188,12 @@ export default function Auth() {
                 </div>
               )}
 
-              <GlowButton className="w-full py-3 mt-4 text-lg flex items-center justify-center gap-2 group" type="submit">
-                {isLogin ? 'Authenticate' : 'Request Access'}
+              <GlowButton 
+                className="w-full py-3 mt-4 text-lg flex items-center justify-center gap-2 group" 
+                type="submit"
+                disabled={loading}
+              >
+                {loading ? 'Processing...' : (isLogin ? 'Authenticate' : 'Request Access')}
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </GlowButton>
             </form>

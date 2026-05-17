@@ -1,66 +1,81 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import profilePic from '../assets/profile picture.png';
+import { authApi } from '../services/api';
 
 const AuthContext = createContext();
 
-const DEMO_USERS = {
-  ADMIN: {
-    id: 1,
-    name: 'Abhishek Kumar',
-    email: 'abhishek@aura.ai',
-    phone: '+1 (555) 123-4567',
-    location: 'San Francisco, CA',
-    joinDate: 'Oct 2023',
-    role: 'ADMIN',
-    title: 'Java Full Stack Developer',
-    department: 'Engineering',
-    bio: 'Lead engineer overseeing backend architecture and system performance. Specializing in high-availability systems and data integration.',
-    avatar: profilePic
-  },
-  USER: {
-    id: 2,
-    name: 'Emily Davis',
-    email: 'emily@aura.ai',
-    phone: '+1 (555) 987-6543',
-    location: 'New York, NY',
-    joinDate: 'Jan 2024',
-    role: 'USER',
-    title: 'Frontend Engineer',
-    department: 'Design Systems',
-    bio: 'Passionate about building intuitive and accessible user interfaces. Currently leading the UI component library migration.',
-    avatar: null
-  }
-};
-
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem('aura_user');
-    return savedUser ? JSON.parse(savedUser) : null;
-  });
+  const [user, setUser]       = useState(null);
+  const [loading, setLoading] = useState(true); // true while checking saved token
 
+  // ─── On mount: restore session from localStorage token ──
   useEffect(() => {
-    if (user) {
-      localStorage.setItem('aura_user', JSON.stringify(user));
-    } else {
-      localStorage.removeItem('aura_user');
-    }
-  }, [user]);
+    const token = localStorage.getItem('aura_token');
+    if (!token) { setLoading(false); return; }
 
-  const loginAsAdmin = () => setUser(DEMO_USERS.ADMIN);
-  const loginAsUser = () => setUser(DEMO_USERS.USER);
-  const logout = () => setUser(null);
+    authApi.me()
+      .then(res => setUser(res.data.user))
+      .catch(() => {
+        localStorage.removeItem('aura_token');
+        localStorage.removeItem('aura_user');
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  // ─── Login ───────────────────────────────────────────────
+  const login = async (email, password) => {
+    const res = await authApi.login(email, password);
+    const { user, token } = res.data;
+    localStorage.setItem('aura_token', token);
+    localStorage.setItem('aura_user', JSON.stringify(user));
+    setUser(user);
+    return user;
+  };
+
+  // ─── Register ────────────────────────────────────────────
+  const register = async (data) => {
+    const res = await authApi.register(data);
+    const { user, token } = res.data;
+    localStorage.setItem('aura_token', token);
+    localStorage.setItem('aura_user', JSON.stringify(user));
+    setUser(user);
+    return user;
+  };
+
+  // ─── Logout ──────────────────────────────────────────────
+  const logout = () => {
+    localStorage.removeItem('aura_token');
+    localStorage.removeItem('aura_user');
+    setUser(null);
+  };
+
+  // ─── Update profile ──────────────────────────────────────
+  const updateProfile = async (data) => {
+    const res = await authApi.updateProfile(data);
+    setUser(res.data.user);
+    return res.data.user;
+  };
+
+  const value = {
+    user,
+    loading,
+    isAuthenticated: !!user,
+    isAdmin: user?.role === 'ADMIN',
+    isUser:  user?.role === 'USER',
+    login,
+    register,
+    logout,
+    updateProfile,
+  };
 
   return (
-    <AuthContext.Provider value={{ user, loginAsAdmin, loginAsUser, logout, isAuthenticated: !!user, isAdmin: user?.role === 'ADMIN' }}>
-      {children}
+    <AuthContext.Provider value={value}>
+      {!loading && children}
     </AuthContext.Provider>
   );
 }
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 }

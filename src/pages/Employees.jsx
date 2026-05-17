@@ -10,11 +10,14 @@ const STATUSES = ['Online', 'Away', 'Offline', 'In a meeting'];
 
 const initEmployees = [
   { id: 1, name: 'Abhishek Kumar', role: 'Java Full Stack Developer', department: 'Engineering', status: 'Online', productivity: 92, avatar: 'A' },
-  { id: 2, name: 'Sarah Miller', role: 'UX Designer', department: 'Design', status: 'In a meeting', productivity: 88, avatar: 'S' },
-  { id: 3, name: 'James Wilson', role: 'Product Manager', department: 'Product', status: 'Offline', productivity: 75, avatar: 'J' },
-  { id: 4, name: 'Emily Davis', role: 'Frontend Engineer', department: 'Engineering', status: 'Online', productivity: 95, avatar: 'E' },
-  { id: 5, name: 'Michael Brown', role: 'Backend Engineer', department: 'Engineering', status: 'Away', productivity: 82, avatar: 'M' },
-  { id: 6, name: 'Jessica Taylor', role: 'HR Manager', department: 'Human Resources', status: 'Online', productivity: 90, avatar: 'J' },
+  { id: 2, name: 'Gurkirat Kaur', role: 'UX Designer', department: 'Design', status: 'In a meeting', productivity: 88, avatar: 'S' },
+  { id: 3, name: 'Amit Sharma', role: 'Data Engineer', department: 'Data Science', status: 'Offline', productivity: 75, avatar: 'J' },
+  { id: 4, name: 'Harsh Aryan', role: 'Senior Data Scientist', department: 'Data Science', status: 'Online', productivity: 95, avatar: 'E' },
+  { id: 5, name: 'Kushal Kanti', role: 'Backend Engineer', department: 'Engineering', status: 'Away', productivity: 82, avatar: 'M' },
+  { id: 6, name: 'Pranay Parmar', role: 'HR Manager', department: 'Human Resources', status: 'Online', productivity: 90, avatar: 'J' },
+  { id: 7, name: 'Mayank Pritsey', role: 'Legal Advisor', department: 'Legal', status: 'Online', productivity: 92, avatar: 'A' },
+  { id: 8, name: 'Avnish Dwivedi ', role: 'Software Developer', department: 'Engineering', status: 'Online', productivity: 92, avatar: 'A' },
+
 ];
 
 const statusDot = { Online: 'bg-green-500', Away: 'bg-yellow-500', Offline: 'bg-gray-500', 'In a meeting': 'bg-blue-500' };
@@ -204,9 +207,9 @@ export default function Employees() {
                     <td className="px-6 py-4">
                       <span className={cn('text-xs px-2 py-1 rounded-full border flex items-center gap-1.5 w-max',
                         emp.status === 'Online' ? 'bg-green-500/10 border-green-500/20 text-green-500' :
-                        emp.status === 'Away' ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' :
-                        emp.status === 'In a meeting' ? 'bg-blue-500/10 border-blue-500/20 text-blue-500' :
-                        'bg-gray-500/10 border-gray-500/20 text-muted')}>
+                          emp.status === 'Away' ? 'bg-yellow-500/10 border-yellow-500/20 text-yellow-500' :
+                            emp.status === 'In a meeting' ? 'bg-blue-500/10 border-blue-500/20 text-blue-500' :
+                              'bg-gray-500/10 border-gray-500/20 text-muted')}>
                         <span className={cn('w-1.5 h-1.5 rounded-full', statusDot[emp.status])} />
                         {emp.status}
                       </span>
