@@ -3,6 +3,7 @@ import { useAuth } from '../contexts/AuthContext';
 import GlassCard from '../components/GlassCard';
 import GlowButton from '../components/GlowButton';
 import { Mail, Phone, MapPin, Calendar, Building, User as UserIcon, Shield } from 'lucide-react';
+import profilePic from '../assets/profile picture.png';
 
 const container = {
   hidden: { opacity: 0 },
@@ -36,11 +37,7 @@ export default function Profile() {
           <div className="px-8 pb-8">
             <div className="flex flex-col md:flex-row gap-6 items-start md:items-end -mt-16 relative z-10">
               <div className="w-32 h-32 rounded-2xl bg-card border-4 border-bg overflow-hidden shadow-xl flex items-center justify-center shrink-0">
-                {user.avatar ? (
-                  <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-                ) : (
-                  <UserIcon size={48} className="text-muted" />
-                )}
+                <img src={user.avatar || profilePic} alt={user.name} className="w-full h-full object-cover" />
               </div>
               
               <div className="flex-1 mb-2">

@@ -77,11 +77,7 @@ export default function TopNavbar({ sidebarOpen }) {
             onClick={() => setIsProfileOpen(!isProfileOpen)}
           >
             <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-gray-800 to-gray-600 border border-border overflow-hidden relative flex items-center justify-center">
-              {user?.avatar ? (
-                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-              ) : (
-                <User size={20} className="text-white" />
-              )}
+              <img src={user?.avatar || profilePic} alt={user?.name || 'User'} className="w-full h-full object-cover" />
             </div>
             <div className="hidden md:block">
               <p className="text-sm font-medium text-text group-hover:text-accent transition-colors">{user?.name || 'Guest'}</p>

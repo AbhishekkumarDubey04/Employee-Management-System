@@ -6,6 +6,7 @@ import NeonProgressRing from '../components/NeonProgressRing';
 import GlowButton from '../components/GlowButton';
 import { useAuth } from '../contexts/AuthContext';
 import { Link } from 'react-router-dom';
+import profilePic from '../assets/profile picture.png';
 
 const container = {
   hidden: { opacity: 0 },
@@ -29,11 +30,7 @@ function UserDashboard({ user }) {
             <div className="absolute inset-0 rounded-full border-2 border-accent/30 animate-[spin_4s_linear_infinite]" />
             <div className="absolute inset-2 rounded-full border border-accent/50 animate-[spin_3s_linear_infinite_reverse]" />
             <div className="absolute inset-0 bg-gradient-to-tr from-gray-800 to-gray-600 rounded-full overflow-hidden border-2 border-border flex items-center justify-center z-10 bg-card">
-              {user?.avatar ? (
-                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-              ) : (
-                <span className="text-3xl text-muted font-bold">{user?.name?.charAt(0)}</span>
-              )}
+              <img src={user?.avatar || profilePic} alt={user?.name || 'User'} className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-1 right-1 w-4 h-4 bg-[#22C55E] rounded-full border-2 border-bg z-20 shadow-[0_0_10px_#22C55E]" />
           </div>
